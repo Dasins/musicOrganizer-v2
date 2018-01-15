@@ -100,10 +100,15 @@ public class MusicOrganizer
      * @param criterio La cadena buscada en el nombre de los archivos.
      */
     public void listMatching(String criterio) {
+        boolean coincidencias = false;
         for(String file : files) {
             if(file.contains(criterio)) {
                System.out.println(file); 
+               coincidencias = true;
             }
+        }
+        if (!coincidencias) {
+            System.out.println("No se han hallado coincidencias");
         }
     }
 }
