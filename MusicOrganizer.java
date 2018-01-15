@@ -111,4 +111,17 @@ public class MusicOrganizer
             System.out.println("No se han hallado coincidencias");
         }
     }
+    
+    /**
+     * Reproduce muestras de todas las canciones que coincidan con el criterio.
+     * El metodo es sensible a mayusculas y minusculas.
+     * @param criterio La cadena buscada en el nombre de los archivos.
+     */
+    public void playSomethingOf(String criterio) {
+        for(String file : files) {
+            if(file.contains(criterio)) {
+               player.playSample(file); 
+            }
+        }
+    }
 }
