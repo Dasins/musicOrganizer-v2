@@ -87,8 +87,10 @@ public class MusicOrganizer
      * Imprime por terminal de texto toda la lista de archivos.
      */
     public void listAllFiles() {
+        int position = 1;
         for (String file : files) {
-            System.out.println(file);
+            System.out.println(position + "- " + file);
+            position++;
         }
     }
 }
