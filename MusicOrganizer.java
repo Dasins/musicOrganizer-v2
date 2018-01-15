@@ -82,4 +82,13 @@ public class MusicOrganizer
     {
         player.stop();
     }
+    
+    /**
+     * Imprime por terminal de texto toda la lista de archivos.
+     */
+    public void listAllFiles() {
+        for (String file : files) {
+            System.out.println(file);
+        }
+    }
 }
