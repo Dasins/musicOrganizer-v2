@@ -88,9 +88,22 @@ public class MusicOrganizer
      */
     public void listAllFiles() {
         int position = 1;
-        for (String file : files) {
+        for(String file : files) {
             System.out.println(position + "- " + file);
             position++;
+        }
+    }
+    
+    /**
+     * Imprime por terminal de texto los archivos que se corresponden con el criterio de busqueda.
+     * El metodo es sensible a mayusculas y minusculas.
+     * @param criterio La cadena buscada en el nombre de los archivos.
+     */
+    public void listMatching(String criterio) {
+        for(String file : files) {
+            if(file.contains(criterio)) {
+               System.out.println(file); 
+            }
         }
     }
 }
