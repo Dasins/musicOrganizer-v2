@@ -95,14 +95,14 @@ public class MusicOrganizer
     }
     
     /**
-     * Imprime por terminal de texto los archivos que se corresponden con el criterio de busqueda.
+     * Imprime por terminal de texto los archivos que se corresponden con el searchString de busqueda.
      * El metodo es sensible a mayusculas y minusculas.
-     * @param criterio La cadena buscada en el nombre de los archivos.
+     * @param searchString La cadena a buscar.
      */
-    public void listMatching(String criterio) {
+    public void listMatching(String searchString) {
         boolean coincidencias = false;
         for(String file : files) {
-            if(file.contains(criterio)) {
+            if(file.contains(searchString)) {
                System.out.println(file); 
                coincidencias = true;
             }
@@ -113,15 +113,41 @@ public class MusicOrganizer
     }
     
     /**
-     * Reproduce muestras de todas las canciones que coincidan con el criterio.
+     * Reproduce muestras de todas las canciones que coincidan con la cadena indicada.
      * El metodo es sensible a mayusculas y minusculas.
-     * @param criterio La cadena buscada en el nombre de los archivos.
+     * @param searchString La cadena a buscar.
      */
-    public void playSomethingOf(String criterio) {
+    public void playSomethingOf(String searchString) {
         for(String file : files) {
-            if(file.contains(criterio)) {
+            if(file.contains(searchString)) {
                player.playSample(file); 
             }
         }
+    }
+    
+    /**
+     * Localiza el indice del primer archivo que se corresponde con
+     * la cadena de busqueda indicada.
+     * @param searchString La cadena a buscar.
+     * @return El indice de la primera aparicion. 
+     * (-1 si no hay correspondencias)
+     */
+    public int findFirst(String searchString) {
+        int index = 0;
+        // Mientras sea true, seguimos buscando.
+        boolean searching = true;
+        while(searching && index < files.size()) {
+            String filename = files.get(index);
+            if(filename.contains(searchString)) {
+                searching = false;
+            }
+            else {
+                index++;
+            }
+        }
+        if(searching) {
+            index = -1;
+        }
+        return index;
     }
 }
